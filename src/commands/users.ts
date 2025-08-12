@@ -1,5 +1,5 @@
-import { setUser } from "../config";
-import { createUser, getUser } from "../lib/db/queries/users";
+import { readConfig, setUser } from "../config";
+import { createUser, getUser, getUsers, resetUsers } from "../lib/db/queries/users";
 
 export async function handlerLogin(cmdName: string, ...args: string[]) {
   if (args.length !== 1) {
@@ -29,4 +29,40 @@ export async function handlerRegister(cmdName: string, ...args: string[]) {
 
   setUser(user.name);
   console.log("User created sucessfully!");
+};
+
+export async function handlerReset(cmdName: string, ...args: string[]) {
+  if (args.length !== 0) {
+    throw new Error(`usage: ${cmdName} <name?>`);
+  }
+
+  const result = await resetUsers();
+  if (!result) {
+    throw new Error("Could not reset users");
+  }
+
+  console.log("Users reset sucessfully!");
+};
+
+export async function handlerGetUsers(cmdName: string, ...args: string[]) {
+  if (args.length !== 0) {
+    throw new Error(`usage: ${cmdName} <name?>`);
+  }
+
+  const users = await getUsers();
+  const currentUser = readConfig().currentUserName;
+  if (!users) {
+    throw new Error("Could not get users");
+  }
+
+  for (const user of users) {
+    if (user.name === currentUser) {
+      console.log(`* ${user.name} (current)`);
+      continue;
+    }
+    console.log(`* ${user.name}`);
+  }
+
+
+  console.log("Users listed sucessfully!");
 };

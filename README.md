@@ -8,6 +8,7 @@ npm install -D typescript @types/node tsx
 ```
 
 ## tsconfig.json
+
 ```
 {
   "compilerOptions": {
@@ -27,6 +28,7 @@ npm install -D typescript @types/node tsx
 ```
 
 ## package.json
+
 ```
 {
 ...
@@ -40,6 +42,7 @@ npm install -D typescript @types/node tsx
 ```
 
 ## ~/.gatorconfig.json
+
 ```
 {
   "db_url": "connection_string_goes_here",
@@ -49,6 +52,7 @@ npm install -D typescript @types/node tsx
 ```
 
 ## postgres
+
 ```
 sudo apt update
 sudo apt install postgresql postgresql-contrib
@@ -62,6 +66,7 @@ sudo -u postgres psql
 ```
 
 ## gator /postgres
+
 ```
 CREATE DATABASE gator;
 
@@ -73,12 +78,14 @@ SELECT version();
 ```
 
 ## Drizzle ORM
+
 ```
 npm i drizzle-orm postgres
 npm i -D drizzle-kit
 ```
 
 ## src/lib/db/schema.ts
+
 ```
 import { pgTable, timestamp, uuid, text } from "drizzle-orm/pg-core";
 
@@ -94,6 +101,7 @@ export const users = pgTable("users", {
 ```
 
 ## drizzle.config.ts
+
 ```
 import { defineConfig } from "drizzle-kit";
 
@@ -108,11 +116,13 @@ export default defineConfig({
 ```
 
 ## connection string
+
 ```
 postgres://postgres:postgres@localhost:5432/gator?sslmode=disable
 ```
 
 ## package.json
+
 ```
 {
   "scripts": {
@@ -123,7 +133,14 @@ postgres://postgres:postgres@localhost:5432/gator?sslmode=disable
 ```
 
 ## drizzle test
+
 ```
 npm run generate
 npm run migrate
+```
+
+## fast-xml-parser
+
+```
+npm i fast-xml-parser
 ```
