@@ -1,6 +1,6 @@
 {
-  "id": "dec429e9-5751-424c-91e3-77fcc137d329",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "1fcd315f-a51b-4cd3-bb7e-773ad4cd83dc",
+  "prevId": "dec429e9-5751-424c-91e3-77fcc137d329",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -35,6 +35,12 @@
           "primaryKey": false,
           "notNull": true
         },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
         "user_id": {
           "name": "user_id",
           "type": "uuid",
@@ -65,6 +71,13 @@
           "nullsNotDistinct": false,
           "columns": [
             "url"
+          ]
+        },
+        "feeds_name_unique": {
+          "name": "feeds_name_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "name"
           ]
         }
       },
