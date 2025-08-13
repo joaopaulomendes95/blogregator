@@ -8,6 +8,27 @@
       "when": 1755104183210,
       "tag": "0000_curved_nightshade",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1755120475769,
+      "tag": "0001_serious_wild_pack",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1755122982449,
+      "tag": "0002_fancy_vivisector",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1755125116556,
+      "tag": "0003_chemical_norrin_radd",
+      "breakpoints": true
     }
   ]
 }
