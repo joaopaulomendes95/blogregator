@@ -27,24 +27,6 @@ export async function handlerAddFeed(cmdName: string, ...args: string[]) {
   printFeed(feed, user);
 }
 
-export async function handlerListFeeds() {
-  const config = readConfig();
-  const user = await getUser(config.currentUserName);
-
-  if (!user) {
-    throw new Error(`User ${config.currentUserName} not found`);
-  }
-
-  const feeds = await getFeeds();
-  if (!feeds) {
-    throw new Error("Failed to get feed");
-  }
-
-  for (const feed of feeds) {
-    printFeed(feed, user);
-  }
-}
-
 function printFeed(feed: Feed, user: User) {
   console.log(`* ID:           ${feed.id}`);
   console.log(`* Created:      ${feed.createdAt}`);
@@ -53,3 +35,23 @@ function printFeed(feed: Feed, user: User) {
   console.log(`* URL:          ${feed.url}`);
   console.log(`* User:         ${user.name}`);
 }
+
+export async function handlerListFeeds() {
+  const result = await getFeeds();
+  if (!result) {
+    throw new Error("Failed to fetch feeds");
+  }
+
+  if (result.length === 0) {
+    throw new Error("No feeds to show.");
+  }
+
+  for (const row of result) {
+    console.log();
+    console.log(`* Feed:       ${row.feedName}`);
+    console.log(`* URL:        ${row.feedUrl}`);
+    console.log(`* Created by: ${row.userName}`);
+    console.log();
+  }
+}
+

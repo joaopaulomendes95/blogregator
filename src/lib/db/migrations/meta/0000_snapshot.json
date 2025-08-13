@@ -1,5 +1,5 @@
 {
-  "id": "dec429e9-5751-424c-91e3-77fcc137d329",
+  "id": "7170ab35-6ba7-4e58-9425-8900986e6ef1",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -28,6 +28,12 @@
           "primaryKey": false,
           "notNull": true,
           "default": "now()"
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
         },
         "url": {
           "name": "url",
@@ -60,6 +66,13 @@
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
+        "feeds_name_unique": {
+          "name": "feeds_name_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "name"
+          ]
+        },
         "feeds_url_unique": {
           "name": "feeds_url_unique",
           "nullsNotDistinct": false,
