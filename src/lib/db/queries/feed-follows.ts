@@ -49,13 +49,15 @@ export async function getFeedFollowsForUser(userId: string) {
 }
 
 export async function deleteFeedFollow(userId: string, feedId: string) {
-  await db
+  const [result] = await db
     .delete(feedFollows)
     .where(
       and(
         eq(feedFollows.userId, userId),
-        eq(feedFollows.feedId, feedId),
+        eq(feedFollows.feedId, feedId)
       )
-    );
+    ).returning();
+
+  return result;
 }
 
